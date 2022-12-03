@@ -1,4 +1,18 @@
 export default {
+  'menu.asset': 'Asset',
+  'menu.asset.ssd': 'SSD',
+  'menu.asset.server': 'Server',
+  'menu.asset.desktop': 'Desktop',
+  'menu.test': 'Test',
+  'menu.test.project': 'Project',
+  'menu.test.case': 'Case',
+  'menu.test.report': 'Report',
+  'menu.test.tool': 'Tool',
+  'menu.automation': 'Automation',
+  'menu.automation.task': 'Task',
+  'menu.setup': 'Setup',
+  'menu.setup.user': 'User',
+
   'menu.welcome': 'Welcome',
   'menu.more-blocks': 'More Blocks',
   'menu.home': 'Home',

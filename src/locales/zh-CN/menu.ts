@@ -1,4 +1,18 @@
 export default {
+  'menu.asset': '资产管理',
+  'menu.asset.ssd': '固态硬盘',
+  'menu.asset.server': '服务器',
+  'menu.asset.desktop': '台式机',
+  'menu.test': '测试管理',
+  'menu.test.project': '测试项目',
+  'menu.test.case': '测试用例',
+  'menu.test.report': '测试报告',
+  'menu.test.tool': '测试工具',
+  'menu.automation': '自动化',
+  'menu.automation.task': '任务管理',
+  'menu.setup': '系统管理',
+  'menu.setup.user': '用户管理',
+
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',

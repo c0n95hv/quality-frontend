@@ -14,22 +14,77 @@
     ],
   },
   {
-    path: '/welcome',
-    name: 'welcome',
-    icon: 'smile',
-    component: './Welcome',
+    name: 'asset',
+    icon: 'ProjectOutlined',
+    path: '/asset',
+    routes: [
+      {
+        path: '/asset/ssd',
+        name: 'ssd',
+        component: './asset/ssd',
+      },
+      {
+        path: '/asset/server',
+        name: 'server',
+        component: './asset/server',
+      },
+      {
+        path: '/asset/desktop',
+        name: 'desktop',
+        component: './asset/desktop',
+      },
+    ],
   },
   {
-    path: '/admin',
-    name: 'admin',
-    icon: 'crown',
+    name: 'test',
+    icon: 'FormOutlined',
+    path: '/test',
+    routes: [
+      {
+        path: '/test/project',
+        name: 'project',
+        component: './test/project',
+      },
+      {
+        path: '/test/case',
+        name: 'case',
+        component: './test/case',
+      },
+      {
+        path: '/test/report',
+        name: 'report',
+        component: './test/report',
+      },
+      {
+        path: '/test/tool',
+        name: 'tool',
+        component: './test/tool',
+      },
+    ],
+  },
+  {
+    name: 'automation',
+    icon: 'RobotOutlined',
+    path: '/automation',
+    routes: [
+      {
+        path: '/automation/task',
+        name: 'task',
+        component: './automation/task',
+      },
+    ],
+  },
+  {
+    path: '/setup',
+    name: 'setup',
+    icon: 'SettingOutlined',
     access: 'canAdmin',
     routes: [
       {
-        path: '/admin/sub-page',
-        name: 'sub-page',
+        path: '/setup/user',
+        name: 'user',
         icon: 'smile',
-        component: './Welcome',
+        component: './setup/user',
       },
       {
         component: './404',
@@ -44,7 +99,7 @@
   },
   {
     path: '/',
-    redirect: '/welcome',
+    redirect: '/asset/ssd',
   },
   {
     component: './404',
