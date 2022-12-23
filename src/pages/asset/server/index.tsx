@@ -54,7 +54,7 @@ const handleRemove = async (selectedRows: ServerListItem[]) => {
 
   try {
     await removeServer({
-      key: selectedRows.map((row) => row.key),
+      id: selectedRows.map((row) => row.id),
     });
     hide();
     message.success('删除成功，即将刷新');
@@ -65,6 +65,7 @@ const handleRemove = async (selectedRows: ServerListItem[]) => {
     return false;
   }
 };
+
 
 const TableList: React.FC = () => {
 
@@ -78,9 +79,12 @@ const TableList: React.FC = () => {
 
   const columns: ProColumns<ServerListItem>[] = [
     {
+      title: 'ID',
+      dataIndex: 'id',
+    },
+    {
       title: 'Name',
       dataIndex: 'name',
-      // tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
           <a
@@ -101,7 +105,6 @@ const TableList: React.FC = () => {
     {
       title: 'Status',
       dataIndex: 'status',
-      hideInForm: true,
       valueEnum: {
         0: {
           text: 'Shutdown',
@@ -142,9 +145,10 @@ const TableList: React.FC = () => {
       dataIndex: 'bmc_ip',
     },
     {
-      title: 'Commit',
-      dataIndex: 'commit',
+      title: 'Comment',
+      dataIndex: 'comment',
       valueType: 'textarea',
+      // ellipsis: true,
     },
     {
       title: 'Option',
@@ -169,10 +173,8 @@ const TableList: React.FC = () => {
       <ProTable<ServerListItem, ServerListPagination>
         headerTitle="Server"
         actionRef={actionRef}
-        rowKey="key"
-        search={{
-          labelWidth: 120,
-        }}
+        rowKey="id"
+        search={false}
         toolBarRender={() => [
           <Button
             type="primary"
@@ -194,12 +196,13 @@ const TableList: React.FC = () => {
       />
       {selectedRowsState?.length > 0 && (
         <FooterToolbar>
-          <Button danger
-                  onClick={async () => {
-                    await handleRemove(selectedRowsState);
-                    setSelectedRows([]);
-                    actionRef.current?.reloadAndRest?.();
-                  }}
+          <Button
+            danger
+            onClick={async () => {
+              await handleRemove(selectedRowsState);
+              setSelectedRows([]);
+              actionRef.current?.reloadAndRest?.();
+            }}
           >
             Delete
           </Button>
@@ -207,7 +210,10 @@ const TableList: React.FC = () => {
       )}
       <ModalForm
         title="New Server"
-        width="400px"
+        width="600px"
+        layout="horizontal"
+        labelCol={{span: 6}}
+        wrapperCol={{span: 24}}
         visible={createModalVisible}
         onVisibleChange={handleModalVisible}
         onFinish={async (value) => {
@@ -220,20 +226,61 @@ const TableList: React.FC = () => {
           }
         }}
       >
+        {/*<ProFormText*/}
+        {/*  rules={[*/}
+        {/*    {*/}
+        {/*      required: true,*/}
+        {/*      message: 'Rule name is required',*/}
+        {/*    },*/}
+        {/*  ]}*/}
+        {/*  width="md"*/}
+        {/*  name="name"*/}
+        {/*/>*/}
         <ProFormText
+          width="md"
+          name="name"
+          label="Name"
           rules={[
             {
               required: true,
-              message: 'Rule name is required',
+              message: 'Name is required',
             },
           ]}
-          width="md"
-          name="name"
         />
-        <ProFormText width="md" name="sn"/>
-        <ProFormText width="md" name="position"/>
-        <ProFormText width="md" name="ip"/>
-        <ProFormTextArea width="md" name="bmc_ip"/>
+        <ProFormText
+          width="md"
+          name="sn"
+          label="Serial Number"
+          rules={[
+            {
+              required: true,
+              message: 'Serial Number is required',
+            },
+          ]}
+        />
+        <ProFormText
+          width="md"
+          name="position"
+          label="Position"
+          rules={[
+            {
+              required: true,
+              message: 'Position is required',
+            },
+          ]}
+        />
+        <ProFormText
+          width="md"
+          name="ip"
+          label="IP Address"
+          rules={[
+            {
+              required: true,
+              message: 'IP Address is required',
+            },
+          ]}
+        />
+        <ProFormTextArea width="md" name="comment" label="Comment"/>
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {

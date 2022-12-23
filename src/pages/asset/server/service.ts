@@ -14,7 +14,7 @@ export async function getServer(
     data: ServerListItem[];
     total?: number;
     success?: boolean;
-  }>('/api/server', {
+  }>('/api/asset/server/', {
     method: 'GET',
     params: {
       ...params,
@@ -24,7 +24,7 @@ export async function getServer(
 }
 
 export async function updateServer(data: { [key: string]: any }, options?: { [key: string]: any }) {
-  return request<ServerListItem>('/api/server', {
+  return request<ServerListItem>('/api/asset/server/', {
     data,
     method: 'PUT',
     ...(options || {}),
@@ -32,15 +32,15 @@ export async function updateServer(data: { [key: string]: any }, options?: { [ke
 }
 
 export async function addServer(data: { [key: string]: any }, options?: { [key: string]: any }) {
-  return request<ServerListItem>('/api/server', {
+  return request<ServerListItem>('/api/asset/server/', {
     data,
     method: 'POST',
     ...(options || {}),
   });
 }
 
-export async function removeServer(data: { key: number[] }, options?: { [key: string]: any }) {
-  return request<Record<string, any>>('/api/server', {
+export async function removeServer(data: { id: number[] }, options?: { [id: string]: any }) {
+  return request<Record<string, any>>('/api/asset/server/', {
     data,
     method: 'DELETE',
     ...(options || {}),

@@ -1,10 +1,10 @@
 export type ServerListItem = {
-  key: number;
+  id: number;
   name: string;
   sn: string;
   status: string;
   position: string;
-  commit: string;
+  comment: string;
   hostname: string;
   ip: string;
   mac: string;
