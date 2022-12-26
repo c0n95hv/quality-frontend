@@ -5,8 +5,6 @@ import {
   ProFormText,
   ProFormTextArea,
   StepsForm,
-  ProFormRadio,
-  ProFormDateTimePicker,
 } from '@ant-design/pro-form';
 import type {ServerListItem} from '../data';
 
@@ -39,8 +37,8 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
               padding: '32px 40px 48px',
             }}
             destroyOnClose
-            title="规则配置"
-            visible={props.updateModalVisible}
+            title="Update"
+            open={props.updateModalVisible}
             footer={submitter}
             onCancel={() => {
               props.onCancel();
@@ -55,102 +53,98 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
       <StepsForm.StepForm
         initialValues={{
           name: props.values.name,
-          // desc: props.values.desc,
+          sn: props.values.sn,
+          position: props.values.position,
+          ip: props.values.ip,
         }}
-        title="基本信息"
+        title="Basic"
+        layout="horizontal"
+        labelCol={{span: 6}}
+        wrapperCol={{span: 24}}
       >
         <ProFormText
+          width="md"
           name="name"
-          label="规则名称"
-          width="md"
+          label="Name"
           rules={[
             {
               required: true,
-              message: '请输入规则名称！',
+              message: 'Name is required',
             },
           ]}
         />
-        <ProFormTextArea
-          name="desc"
+        <ProFormText
           width="md"
-          label="规则描述"
-          placeholder="请输入至少五个字符"
+          name="sn"
+          label="Serial Number"
           rules={[
             {
               required: true,
-              message: '请输入至少五个字符的规则描述！',
-              min: 5,
+              message: 'Serial Number is required',
+            },
+          ]}
+        />
+        <ProFormText
+          width="md"
+          name="position"
+          label="Position"
+          rules={[
+            {
+              required: true,
+              message: 'Position is required',
+            },
+          ]}
+        />
+        <ProFormText
+          width="md"
+          name="ip"
+          label="IP Address"
+          rules={[
+            {
+              required: true,
+              message: 'IP Address is required',
             },
           ]}
         />
       </StepsForm.StepForm>
       <StepsForm.StepForm
         initialValues={{
-          target: '0',
-          template: '0',
+          status: props.values.status,
+          hostname: props.values.hostname,
+          mac: props.values.mac,
+          bmc_ip: props.values.bmc_ip,
         }}
-        title="配置规则属性"
+        title="Advanced"
+        layout="horizontal"
+        labelCol={{span: 6}}
+        wrapperCol={{span: 24}}
       >
         <ProFormSelect
-          name="target"
+          name="status"
           width="md"
-          label="监控对象"
+          label="Status"
           valueEnum={{
-            0: '表一',
-            1: '表二',
+            'Unknown': 'Unknown',
+            'Shutdown': 'Shutdown',
+            'Processing': 'Processing',
+            'Online': 'Online',
+            'Abnormal': 'Abnormal',
           }}
         />
-        <ProFormSelect
-          name="template"
-          width="md"
-          label="规则模板"
-          valueEnum={{
-            0: '规则模板一',
-            1: '规则模板二',
-          }}
-        />
-        <ProFormRadio.Group
-          name="type"
-          label="规则类型"
-          options={[
-            {
-              value: '0',
-              label: '强',
-            },
-            {
-              value: '1',
-              label: '弱',
-            },
-          ]}
-        />
+        <ProFormText width="md" name="hostname" label="Hostname"/>
+        <ProFormText width="md" name="mac" label="MAC Address"/>
+        <ProFormText width="md" name="bmc_ip" label="BMC IP Address"/>
       </StepsForm.StepForm>
       <StepsForm.StepForm
         initialValues={{
-          type: '1',
-          frequency: 'month',
+          comment: props.values.comment,
         }}
-        title="设定调度周期"
+        title="More"
+        layout="horizontal"
+        labelCol={{span: 6}}
+        wrapperCol={{span: 24}}
       >
-        <ProFormDateTimePicker
-          name="time"
-          width="md"
-          label="开始时间"
-          rules={[
-            {
-              required: true,
-              message: '请选择开始时间！',
-            },
-          ]}
-        />
-        <ProFormSelect
-          name="frequency"
-          label="监控对象"
-          width="md"
-          valueEnum={{
-            month: '月',
-            week: '周',
-          }}
-        />
+        <ProFormTextArea width="md" name="comment" label="Comment"/>
       </StepsForm.StepForm>
     </StepsForm>
   );

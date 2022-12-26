@@ -106,19 +106,23 @@ const TableList: React.FC = () => {
       title: 'Status',
       dataIndex: 'status',
       valueEnum: {
-        0: {
+        'Unknown': {
+          text: 'Unknown',
+          status: 'Warning',
+        },
+        'Shutdown': {
           text: 'Shutdown',
           status: 'Default',
         },
-        1: {
+        'Processing': {
           text: 'Processing',
           status: 'Processing',
         },
-        2: {
+        'Online': {
           text: 'Online',
           status: 'Success',
         },
-        3: {
+        'Abnormal': {
           text: 'Abnormal',
           status: 'Error',
         },
@@ -226,16 +230,6 @@ const TableList: React.FC = () => {
           }
         }}
       >
-        {/*<ProFormText*/}
-        {/*  rules={[*/}
-        {/*    {*/}
-        {/*      required: true,*/}
-        {/*      message: 'Rule name is required',*/}
-        {/*    },*/}
-        {/*  ]}*/}
-        {/*  width="md"*/}
-        {/*  name="name"*/}
-        {/*/>*/}
         <ProFormText
           width="md"
           name="name"
