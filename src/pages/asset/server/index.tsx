@@ -245,23 +245,11 @@ const TableList: React.FC = () => {
           width="md"
           name="sn"
           label="Serial Number"
-          rules={[
-            {
-              required: true,
-              message: 'Serial Number is required',
-            },
-          ]}
         />
         <ProFormText
           width="md"
           name="position"
           label="Position"
-          rules={[
-            {
-              required: true,
-              message: 'Position is required',
-            },
-          ]}
         />
         <ProFormText
           width="md"
