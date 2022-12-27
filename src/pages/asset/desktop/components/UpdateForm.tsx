@@ -6,7 +6,7 @@ import {
   ProFormTextArea,
   StepsForm,
 } from '@ant-design/pro-form';
-import type {ServerListItem} from '../data';
+import type {DesktopListItem} from '../data';
 
 export type FormValueType = {
   target?: string;
@@ -14,13 +14,13 @@ export type FormValueType = {
   type?: string;
   time?: string;
   frequency?: string;
-} & Partial<ServerListItem>;
+} & Partial<DesktopListItem>;
 
 export type UpdateFormProps = {
   onCancel: (flag?: boolean, formVals?: FormValueType) => void;
   onSubmit: (values: FormValueType) => Promise<void>;
   updateModalVisible: boolean;
-  values: Partial<ServerListItem>;
+  values: Partial<DesktopListItem>;
 };
 
 const UpdateForm: React.FC<UpdateFormProps> = (props) => {
@@ -37,7 +37,7 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
               padding: '32px 40px 48px',
             }}
             destroyOnClose
-            title="Update Server"
+            title="Update Desktop"
             open={props.updateModalVisible}
             footer={submitter}
             onCancel={() => {
@@ -100,7 +100,10 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
           status: props.values.status,
           hostname: props.values.hostname,
           mac: props.values.mac,
-          bmc_ip: props.values.bmc_ip,
+          ssd_pcb: props.values.ssd_pcb,
+          power_pcb: props.values.power_pcb,
+          raspberry_pi_ip: props.values.raspberry_pi_ip,
+          raspberry_pi_mac: props.values.raspberry_pi_mac,
         }}
         title="Advanced"
         layout="horizontal"
@@ -121,7 +124,10 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
         />
         <ProFormText width="md" name="hostname" label="Hostname"/>
         <ProFormText width="md" name="mac" label="MAC"/>
-        <ProFormText width="md" name="bmc_ip" label="BMC IP"/>
+        <ProFormText width="md" name="ssd_pcb" label="SSD PCB"/>
+        <ProFormText width="md" name="power_pcb" label="Power PCB"/>
+        <ProFormText width="md" name="raspberry_pi_ip" label="Raspberry Pi IP"/>
+        <ProFormText width="md" name="raspberry_pi_mac" label="Raspberry Pi MAC"/>
       </StepsForm.StepForm>
       <StepsForm.StepForm
         initialValues={{

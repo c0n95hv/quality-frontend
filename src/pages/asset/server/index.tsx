@@ -137,15 +137,15 @@ const TableList: React.FC = () => {
       dataIndex: 'hostname',
     },
     {
-      title: 'IP Address',
+      title: 'IP',
       dataIndex: 'ip',
     },
     {
-      title: 'MAC Address',
+      title: 'MAC',
       dataIndex: 'mac',
     },
     {
-      title: 'BMC IP Address',
+      title: 'BMC IP',
       dataIndex: 'bmc_ip',
     },
     {
@@ -254,11 +254,11 @@ const TableList: React.FC = () => {
         <ProFormText
           width="md"
           name="ip"
-          label="IP Address"
+          label="IP"
           rules={[
             {
               required: true,
-              message: 'IP Address is required',
+              message: 'IP is required',
             },
           ]}
         />

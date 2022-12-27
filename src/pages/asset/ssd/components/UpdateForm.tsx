@@ -54,6 +54,7 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
         initialValues={{
           name: props.values.name,
           sn: props.values.sn,
+          status: props.values.status,
           position: props.values.position,
         }}
         title="Basic"
@@ -94,12 +95,6 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
             'Online': 'Online',
             'Abnormal': 'Abnormal',
           }}
-          rules={[
-            {
-              required: true,
-              message: 'Status is required',
-            },
-          ]}
         />
         <ProFormText
           width="md"

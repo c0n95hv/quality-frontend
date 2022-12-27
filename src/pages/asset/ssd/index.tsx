@@ -259,12 +259,6 @@ const TableList: React.FC = () => {
             'Online': 'Online',
             'Abnormal': 'Abnormal',
           }}
-          rules={[
-            {
-              required: true,
-              message: 'Status is required',
-            },
-          ]}
         />
         <ProFormText
           width="md"
@@ -282,28 +276,8 @@ const TableList: React.FC = () => {
             },
           ]}
         />
-        <ProFormText
-          width="md"
-          name="capacity"
-          label="Capacity"
-          rules={[
-            {
-              required: true,
-              message: 'Capacity is required',
-            },
-          ]}
-        />
-        <ProFormText
-          width="md"
-          name="firmware"
-          label="Firmware"
-          rules={[
-            {
-              required: true,
-              message: 'Firmware is required',
-            },
-          ]}
-        />
+        <ProFormText width="md" name="capacity" label="Capacity"/>
+        <ProFormText width="md" name="firmware" label="Firmware"/>
         <ProFormTextArea width="md" name="comment" label="Comment"/>
       </ModalForm>
       <UpdateForm
