@@ -160,6 +160,9 @@ const TableList: React.FC = () => {
             <PlusOutlined/> New
           </Button>,
         ]}
+        pagination={{
+          showSizeChanger: true,
+        }}
         request={getTool}
         columns={columns}
         rowSelection={{

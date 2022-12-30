@@ -186,6 +186,9 @@ const TableList: React.FC = () => {
             <PlusOutlined/> New
           </Button>,
         ]}
+        pagination={{
+          showSizeChanger: true,
+        }}
         request={getSSD}
         columns={columns}
         rowSelection={{

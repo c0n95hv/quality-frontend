@@ -202,6 +202,9 @@ const TableList: React.FC = () => {
             <PlusOutlined/> New
           </Button>,
         ]}
+        pagination={{
+          showSizeChanger: true,
+        }}
         request={getDesktop}
         columns={columns}
         rowSelection={{
